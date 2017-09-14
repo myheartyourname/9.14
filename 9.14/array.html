@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>array</title>
+</head>
+<body>
+	<script>
+		let arr3=[1,2,3,4];
+		let arr1=['a','b','c','d'];
+		arr3.push(...arr1);
+		console.log(arr3);
+	</script>
+	<script>
+		
+		let arr=[1,2,3,4,5,1,2,3];
+		
+		/*第一种：arr->newarr 
+		          判断：newarr->arr[i]
+		          不存在：newarr[i]=arr[i]
+		          返回newarr*/
+		function quchong(){
+			let newarr=[];
+			for (let i=0;i<arr.length;i++){
+				if (!newarr.includes(arr[i])){
+					newarr.push(arr[i]);
+				}
+			}
+			return newarr;
+		}
+		console.log(quchong());    //[1,2,3,4,5]
+
+
+
+		/*第二种：先判断是否有重复，有重复不放，不重复再放
+		          再与新数组比较，没有再放*/
+		Array.prototype.quchong2=function(){
+		   let newarr2=[];
+			for(let i=0;i<this.length;i++){
+				let flag=true;
+				for (let j=i+1;j<this.length;j++){
+					if (this[j]==this[i]){
+						flag=false;
+						break;
+					}
+					
+				}
+                if (flag){
+                	newarr2.push(this[i]);
+                }
+			}
+			return newarr2;
+		}
+		console.log(arr.quchong2());  //[4,5,1,2,3]
+	</script>
+</body>
+</html>

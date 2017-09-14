@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Math</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		function color(){     //rgb(a,b,c)
+          let str='rgb(';
+          for (let i=0;i<3;i++){
+          	let num=Math.round(Math.random()*255);
+          	str+=num+',';
+          }
+          str=str.slice(0,-1);
+          str+=')';
+          return str;
+		}
+		console.log(color());
+        let box=document.getElementById('box');
+        	box.onmouseover=function(){   //事件驱动
+        	box.style.background=color();
+           }
+	</script>
+	<script>
+		let arr=['a','b','c','d','e'];
+		function Random(arr,value){
+			let newarr=[];
+			for (let i=0;i<value;i++){
+				let num=Math.floor(Math.random()*arr.length);
+				if (!newarr.includes(arr[num])){
+					newarr.push(arr[num]);
+			    }
+				else{
+					i--;
+				}
+		    }
+		    return newarr;
+		}
+		console.log(Random(arr,3));
+	</script>
+	<script>
+		let arr1=['a','b','c','d','e'];
+		function Random(arr,value){
+			let newarr=[];
+			while (newarr.length<value){
+				let num=Math.floor(Math.random()*arr1.length);
+				if (!newarr.includes(arr1[num])){
+					newarr.push(arr1[num]);
+			    }
+		    }
+		    return newarr;
+		}
+		console.log(Random(arr1,3));
+	</script>
+</body>
+</html>
